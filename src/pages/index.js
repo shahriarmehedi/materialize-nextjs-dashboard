@@ -12,7 +12,7 @@ const Home = () => {
         <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" className="navbar w-nav">
           <div className="navbar-container">
             <div className="navigation-wrapper">
-              <a href="#" id="w-node-a67eed99-a0e3-b023-f153-0fb56ad0654e-6ad0654b" aria-current="page" className="nav-brand w-inline-block w--current"><img src="images/logo4.png" loading="lazy" alt="" sizes="(max-width: 479px) 100vw, (max-width: 767px) 195.99827575683594px, (max-width: 991px) 26vw, (max-width: 1439px) 18vw, 195.99827575683594px" srcset="images/logo4.png 500w, images/logo4.png 800w, images/logo4.png 1067w" className="logo" /></a>
+              <a href="#" id="w-node-a67eed99-a0e3-b023-f153-0fb56ad0654e-6ad0654b" aria-current="page" className="nav-brand w-inline-block w--current"><img src="images/logo4.png" loading="lazy" alt="" sizes="(max-width: 479px) 100vw, (max-width: 767px) 195.99827575683594px, (max-width: 991px) 26vw, (max-width: 1439px) 18vw, 195.99827575683594px" srcSet="images/logo4.png 500w, images/logo4.png 800w, images/logo4.png 1067w" className="logo" /></a>
               <nav role="navigation" id="w-node-a67eed99-a0e3-b023-f153-0fb56ad06550-6ad0654b" className="nav-main-menu w-nav-menu">
 
                 <div data-hover="false" data-delay="0" className="nav-dropdown w-dropdown">
@@ -552,7 +552,7 @@ const Home = () => {
             <div className="container">
               <div className="w-layout-grid f-footer-grid">
                 <div id="w-node-_6257d092-e1a2-97fc-2ade-e2ee8349ab1b-8349ab17">
-                  <div className="center-xs"><a data-w-id="6257d092-e1a2-97fc-2ade-e2ee8349ab1d" href="/" aria-current="page" className="nav-brand margin-20 w-inline-block w--current"><img src="images/logo4.png" loading="lazy" width="124" sizes="(max-width: 479px) 90vw, 196px" srcset="images/LTyHwJAueet3.png 500w, images/logo4.png 800w, images/logo4.png 1067w" alt="" className="logo" /></a></div>
+                  <div className="center-xs"><a data-w-id="6257d092-e1a2-97fc-2ade-e2ee8349ab1d" href="/" aria-current="page" className="nav-brand margin-20 w-inline-block w--current"><img src="images/logo4.png" loading="lazy" width="124" sizes="(max-width: 479px) 90vw, 196px" srcSet="images/LTyHwJAueet3.png 500w, images/logo4.png 800w, images/logo4.png 1067w" alt="" className="logo" /></a></div>
                   <p className="paragraph margin-50">Pascalcase.AI helps organizations effortlessly train, tune, optimize, deploy, scale and monitor AI models in the cloud.</p>
 
                 </div>
