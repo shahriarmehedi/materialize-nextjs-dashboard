@@ -108,6 +108,7 @@ const Register = () => {
   const handleRegister = e => {
     e.preventDefault()
     console.log('register', e.target.value)
+
   }
 
   return (

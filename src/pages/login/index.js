@@ -379,7 +379,7 @@ const LoginPage = () => {
                 <IconButton href='/' component={Link} sx={{ color: '#db4437' }} onClick={e => e.preventDefault()}>
                   <Icon icon='mdi:google' />
                 </IconButton>
-                <SigninButton />
+                {/* <SigninButton /> */}
               </Box>
             </form>
           </BoxWrapper>

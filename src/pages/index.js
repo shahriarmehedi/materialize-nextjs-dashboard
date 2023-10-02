@@ -1,8 +1,17 @@
-// import css from public folder
+import { useRouter } from "next/router";
+
 
 import Link from "next/link";
 
 const Home = () => {
+
+  const { push } = useRouter();
+
+  const handleLogin = () => {
+    push("/api/auth/login");
+  };
+
+
   return (
     <div className="App">
       <div className="body">
@@ -149,11 +158,11 @@ const Home = () => {
                   </nav>
                 </div>
                 <div className="mobile-nav-buttons">
-                  <Link data-w-id="a67eed99-a0e3-b023-f153-0fb56ad0659c" href="/login" className="primary-button nav mobile w-inline-block">
+                  <div onClick={handleLogin} data-w-id="a67eed99-a0e3-b023-f153-0fb56ad0659c" className="primary-button nav mobile w-inline-block">
                     <div className="button-text nav">Login/Sign up →</div>
                     <div className="button-hover-center"></div>
                     <div className="button-hover"></div>
-                  </Link>
+                  </div>
                   <a href="https://tally.so/r/w4JPDd" className="secondary-button nav mobile w-inline-block">
                     <div className="secondary-button-text">Request Access</div>
                   </a>
@@ -164,9 +173,9 @@ const Home = () => {
 
 
               <div id="w-node-a67eed99-a0e3-b023-f153-0fb56ad065a4-6ad0654b" className="b-navigation-button-wrapper">
-                <Link data-w-id="a67eed99-a0e3-b023-f153-0fb56ad065a8" href="/login" className="primary-button nav w-inline-block">
+                <div onClick={handleLogin} data-w-id="a67eed99-a0e3-b023-f153-0fb56ad065a8" className="primary-button nav w-inline-block">
                   <div className="button-text nav">Login/Sign up →</div>
-                </Link>
+                </div>
                 <div className="b-navigation-menu-button w-nav-button">
                   <div data-w-id="a67eed99-a0e3-b023-f153-0fb56ad065ae" className="icon w-icon-nav-menu"></div>
                 </div>

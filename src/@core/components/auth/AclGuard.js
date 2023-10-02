@@ -21,7 +21,9 @@ import { useAuth } from 'src/hooks/useAuth'
 // ** Util Import
 import getHomeRoute from 'src/layouts/components/acl/getHomeRoute'
 
+
 const AclGuard = props => {
+
   // ** Props
   const { aclAbilities, children, guestGuard = false, authGuard = true } = props
 

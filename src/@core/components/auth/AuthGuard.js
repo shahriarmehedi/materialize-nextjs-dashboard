@@ -7,7 +7,16 @@ import { useRouter } from 'next/router'
 // ** Hooks Import
 import { useAuth } from 'src/hooks/useAuth'
 
+
+// AUTH0
+import { useUser } from '@auth0/nextjs-auth0'
+
 const AuthGuard = props => {
+
+  // AUTH0
+  const { user, error, isLoading } = useUser();
+
+
   const { children, fallback } = props
   const auth = useAuth()
   const router = useRouter()
@@ -30,7 +39,7 @@ const AuthGuard = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [router.route]
   )
-  if (auth.loading || auth.user === null) {
+  if (isLoading || auth.user === null) {
     return fallback
   }
 
