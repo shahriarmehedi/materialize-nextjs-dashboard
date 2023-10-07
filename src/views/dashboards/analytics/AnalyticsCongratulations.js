@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
 import { styled, useTheme } from '@mui/material/styles'
+import { useEffect, useState } from 'react'
 
 // Styled Grid component
 const StyledGrid = styled(Grid)(({ theme }) => ({
@@ -29,6 +30,17 @@ const Img = styled('img')(({ theme }) => ({
 }))
 
 const AnalyticsCongratulations = () => {
+
+
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    fetch('/data.json')
+      .then(response => response.json())
+      .then(data => setData(data?.analyticsCongratulation))
+  }, [])
+
+
   // ** Hook
   const theme = useTheme()
 
@@ -47,7 +59,7 @@ const AnalyticsCongratulations = () => {
             <Typography variant='body2'>
               You have done{' '}
               <Box component='span' sx={{ fontWeight: 600 }}>
-                68%
+                {data?.sales}
               </Box>{' '}
               😎 more sales today.
             </Typography>

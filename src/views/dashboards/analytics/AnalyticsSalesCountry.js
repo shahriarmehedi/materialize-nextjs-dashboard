@@ -10,15 +10,28 @@ import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
 // ** Util Import
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { useEffect, useState } from 'react'
 
-const series = [
-  {
-    name: 'Sales',
-    data: [17165, 13850, 12375, 9567, 7880]
-  }
-]
+
 
 const AnalyticsSalesCountry = () => {
+
+  const [datas, setDatas] = useState([])
+
+  useEffect(() => {
+    fetch('/data.json')
+      .then(response => response.json())
+      .then(data => setDatas(data?.salesCountry))
+  }, [])
+
+  const series = [
+    {
+      name: 'Sales',
+      data: datas?.data
+    }
+  ]
+
+
   // ** Hook
   const theme = useTheme()
 
@@ -78,7 +91,7 @@ const AnalyticsSalesCountry = () => {
     xaxis: {
       axisTicks: { show: false },
       axisBorder: { show: false },
-      categories: ['US', 'IN', 'JA', 'CA', 'AU'],
+      categories: datas?.labels,
       labels: {
         formatter: val => `${Number(val) / 1000}k`,
         style: {

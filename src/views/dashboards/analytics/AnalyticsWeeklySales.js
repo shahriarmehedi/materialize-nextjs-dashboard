@@ -17,26 +17,41 @@ import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
 // ** Util Import
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
-const series = [
-  {
-    type: 'column',
-    name: 'Earning',
-    data: [90, 52, 67, 45, 75, 55, 48]
-  },
-  {
-    type: 'column',
-    name: 'Expense',
-    data: [-53, -29, -67, -84, -60, -40, -77]
-  },
-  {
-    type: 'line',
-    name: 'Expense',
-    data: [73, 20, 50, -20, 58, 15, 31]
-  }
-]
+
 
 const AnalyticsWeeklySales = () => {
+
+  const [datas, setDatas] = useState([])
+
+  useEffect(() => {
+    fetch('/data.json')
+      .then(response => response.json())
+      .then(data => setDatas(data?.weeklySales))
+  }, [])
+
+
+  const series = [
+    {
+      type: 'column',
+      name: 'Earning',
+      data: datas?.comlumnEarning
+    },
+    {
+      type: 'column',
+      name: 'Expense',
+      data: datas?.comlumnExpense
+    },
+    {
+      type: 'line',
+      name: 'Expense',
+      data: datas?.lineExpense
+    }
+  ]
+
+
   // ** Hook
   const theme = useTheme()
 
@@ -92,7 +107,7 @@ const AnalyticsWeeklySales = () => {
     xaxis: {
       axisTicks: { show: false },
       axisBorder: { show: false },
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+      categories: datas?.labels,
       labels: {
         style: { colors: theme.palette.text.disabled }
       }
@@ -132,7 +147,9 @@ const AnalyticsWeeklySales = () => {
               </CustomAvatar>
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <Typography variant='caption'>Net Income</Typography>
-                <Typography sx={{ fontWeight: 600 }}>$438.5k</Typography>
+                <Typography sx={{ fontWeight: 600 }}>
+                  ${datas?.netIncome}k
+                </Typography>
               </Box>
             </Box>
           </Grid>
@@ -143,7 +160,9 @@ const AnalyticsWeeklySales = () => {
               </CustomAvatar>
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <Typography variant='caption'>Expense</Typography>
-                <Typography sx={{ fontWeight: 600 }}>$22.4k</Typography>
+                <Typography sx={{ fontWeight: 600 }}>
+                  ${datas?.expense}k
+                </Typography>
               </Box>
             </Box>
           </Grid>

@@ -8,7 +8,7 @@ const Home = () => {
   const { push } = useRouter();
 
   const handleLogin = () => {
-    push("/api/auth/login");
+    push("/login");
   };
 
 

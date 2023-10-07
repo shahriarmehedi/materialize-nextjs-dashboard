@@ -10,8 +10,20 @@ import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
 // ** Util Import
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { useEffect, useState } from 'react'
 
 const AnalyticsOverview = () => {
+
+
+  const [datas, setDatas] = useState([])
+
+  useEffect(() => {
+    fetch('/data.json')
+      .then(response => response.json())
+      .then(data => setDatas(data?.overview))
+  }, [])
+
+
   // ** Hook
   const theme = useTheme()
 
@@ -58,14 +70,16 @@ const AnalyticsOverview = () => {
       <CardContent>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
           <Typography variant='h6' sx={{ mr: 1.5 }}>
-            $67.1k
+            ${datas?.total}k
           </Typography>
           <Typography variant='subtitle2' sx={{ color: 'success.main' }}>
-            +49%
+            +{datas?.difference}%
           </Typography>
         </Box>
         <Typography variant='body2'>Overview</Typography>
-        <ReactApexcharts type='radialBar' height={119} series={[64]} options={options} />
+        <ReactApexcharts type='radialBar' height={119} series={
+          [datas?.data]
+        } options={options} />
       </CardContent>
     </Card>
   )

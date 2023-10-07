@@ -18,17 +18,9 @@ import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
 // ** Util Import
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { useEffect, useState } from 'react'
 
-const series = [
-  {
-    name: 'Last Week',
-    data: [83, 153, 213, 279, 213, 153, 83]
-  },
-  {
-    name: 'This Week',
-    data: [-84, -156, -216, -282, -216, -156, -84]
-  }
-]
+
 
 // Styled Grid component
 const StyledGrid = styled(Grid)(({ theme }) => ({
@@ -41,6 +33,26 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
 }))
 
 const AnalyticsTotalTransactions = () => {
+
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    fetch('/data.json')
+      .then(response => response.json())
+      .then(data => setData(data?.analyticsTotalTransaction))
+  }, [])
+
+  const series = [
+    {
+      name: 'Last Week',
+      data: data?.lastWeekData
+    },
+    {
+      name: 'This Week',
+      data: data?.thisWeekData
+    }
+  ]
+
   // ** Hook
   const theme = useTheme()
 
@@ -121,7 +133,7 @@ const AnalyticsTotalTransactions = () => {
         <Grid item xs={12} sm={5}>
           <CardHeader
             title='Report'
-            subheader='Last month transactions $234.40k'
+            subheader={`Last month transactions ${data?.lastMonthTransaction}`}
             subheaderTypographyProps={{ sx: { lineHeight: 1.429 } }}
             titleTypographyProps={{ sx: { letterSpacing: '0.15px' } }}
             action={
@@ -149,7 +161,9 @@ const AnalyticsTotalTransactions = () => {
                 <Typography sx={{ mb: 0.5 }} variant='body2'>
                   This Week
                 </Typography>
-                <Typography sx={{ fontWeight: 600 }}>+82.45%</Typography>
+                <Typography sx={{ fontWeight: 600 }}>
+                  {data.thisWeek}%
+                </Typography>
               </Grid>
               <Grid item xs={6} sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
                 <CustomAvatar skin='light' sx={{ mb: 3 }} variant='rounded'>
@@ -158,7 +172,9 @@ const AnalyticsTotalTransactions = () => {
                 <Typography sx={{ mb: 0.5 }} variant='body2'>
                   Last Week
                 </Typography>
-                <Typography sx={{ fontWeight: 600 }}>-24.86%</Typography>
+                <Typography sx={{ fontWeight: 600 }}>
+                  {data.lastWeek}%
+                </Typography>
               </Grid>
             </Grid>
             <Divider
@@ -173,7 +189,9 @@ const AnalyticsTotalTransactions = () => {
                 <Typography sx={{ mb: 0.5 }} variant='body2'>
                   Performance
                 </Typography>
-                <Typography sx={{ fontWeight: 600 }}>+94.15%</Typography>
+                <Typography sx={{ fontWeight: 600 }}>
+                  {data.performance}%
+                </Typography>
               </Grid>
               <Grid item xs={6}>
                 <Button fullWidth variant='contained'>

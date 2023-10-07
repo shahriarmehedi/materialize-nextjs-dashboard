@@ -10,19 +10,32 @@ import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
 // ** Util Import
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { useEffect, useState } from 'react'
 
-const series = [
-  {
-    name: 'Earning',
-    data: [120, 200, 150, 120]
-  },
-  {
-    name: 'Expense',
-    data: [72, 120, 50, 65]
-  }
-]
+
 
 const AnalyticsTotalRevenue = () => {
+
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    fetch('/data.json')
+      .then(response => response.json())
+      .then(data => setData(data?.totalRevenue))
+  }, [])
+
+  const series = [
+    {
+      name: 'Earning',
+      data: data?.earning
+    },
+    {
+      name: 'Expense',
+      data: data?.expense
+    }
+  ]
+
+
   // ** Hook
   const theme = useTheme()
 
@@ -76,10 +89,10 @@ const AnalyticsTotalRevenue = () => {
       <CardContent>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
           <Typography variant='h6' sx={{ mr: 1.5 }}>
-            $42.5k
+            ${data?.totalEarning}k
           </Typography>
           <Typography variant='subtitle2' sx={{ color: 'error.main' }}>
-            -22%
+            -{data?.difference}%
           </Typography>
         </Box>
         <Typography variant='body2'>Total Revenue</Typography>

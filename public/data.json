@@ -1,0 +1,317 @@
+{
+    "analyticsTotalTransaction": {
+        "thisWeekData": [
+            -84,
+            -156,
+            -216,
+            -282,
+            -216,
+            -156,
+            -84
+        ],
+        "lastWeekData": [
+            83,
+            153,
+            213,
+            279,
+            213,
+            153,
+            83
+        ],
+        "thisWeek": 0,
+        "lastWeek": 0,
+        "performance": 0,
+        "lastMonthTransaction": 0
+    },
+    "analyticsCongratulation": {
+        "sales": 0
+    },
+    "visitsByDay": {
+        "weekData": [
+            38,
+            55,
+            48,
+            65,
+            80,
+            38,
+            48
+        ],
+        "totalVisit": 0,
+        "todayVisitToday": 0
+    },
+    "totalRevenue": {
+        "earning": [
+            120,
+            200,
+            150,
+            120
+        ],
+        "expense": [
+            72,
+            120,
+            50,
+            65
+        ],
+        "totalEarning": 0,
+        "difference": 0
+    },
+    "topReferralSources": {
+        "google": [
+            {
+                "status": "active",
+                "conversion": "+24",
+                "totalRevenue": "$42,857",
+                "parameter": "Email Marketing Campaign"
+            },
+            {
+                "conversion": "-12",
+                "status": "completed",
+                "totalRevenue": "$850",
+                "parameter": "Google Workspace",
+                "conversionDifference": "negative"
+            },
+            {
+                "status": "active",
+                "conversion": "+24",
+                "totalRevenue": "$5,576",
+                "parameter": "Affiliation Program"
+            },
+            {
+                "conversion": "0",
+                "status": "in-draft",
+                "totalRevenue": "$0",
+                "parameter": "Google AdSense"
+            }
+        ],
+        "facebook": [
+            {
+                "status": "active",
+                "conversion": "-8",
+                "totalRevenue": "$322",
+                "conversionDifference": "negative",
+                "parameter": "Create Audiences in Ads Manager"
+            },
+            {
+                "status": "active",
+                "conversion": "+19",
+                "totalRevenue": "$5,634",
+                "parameter": "Facebook page advertising"
+            },
+            {
+                "status": "expired",
+                "conversion": "-23",
+                "totalRevenue": "$751",
+                "conversionDifference": "negative",
+                "parameter": "Messenger advertising"
+            },
+            {
+                "conversion": "+21",
+                "status": "completed",
+                "totalRevenue": "$3,585",
+                "parameter": "Video campaign"
+            }
+        ],
+        "instagram": [
+            {
+                "conversion": "-15",
+                "status": "in-draft",
+                "totalRevenue": "$599",
+                "conversionDifference": "negative",
+                "parameter": "Create shopping advertising"
+            },
+            {
+                "conversion": "+37",
+                "status": "completed",
+                "totalRevenue": "$1,467",
+                "parameter": "IGTV advertising"
+            },
+            {
+                "conversion": "0",
+                "status": "in-draft",
+                "totalRevenue": "$0",
+                "parameter": "Collection advertising"
+            },
+            {
+                "status": "active",
+                "conversion": "+29",
+                "totalRevenue": "$4,546",
+                "parameter": "Stories advertising"
+            }
+        ],
+        "reddit": [
+            {
+                "conversion": "+2",
+                "status": "expired",
+                "totalRevenue": "$404",
+                "parameter": "Interests advertising"
+            },
+            {
+                "status": "active",
+                "conversion": "+25",
+                "totalRevenue": "$399",
+                "parameter": "Community advertising"
+            },
+            {
+                "conversion": "+21",
+                "status": "completed",
+                "totalRevenue": "$177",
+                "parameter": "Device advertising"
+            },
+            {
+                "status": "active",
+                "conversion": "-5",
+                "totalRevenue": "$1,139",
+                "parameter": "Campaigning",
+                "conversionDifference": "negative"
+            }
+        ]
+    },
+    "sessions": {
+        "total": 0,
+        "difference": 0,
+        "data": [
+            0,
+            20,
+            5,
+            30,
+            15,
+            45
+        ]
+    },
+    "salesCountry": {
+        "data": [
+            17165,
+            13850,
+            12375,
+            9567,
+            7880
+        ],
+        "labels": [
+            "US",
+            "IN",
+            "PU",
+            "CA",
+            "AU"
+        ]
+    },
+    "projectStatistics": {
+        "data": [
+            {
+                "imgWidth": 22,
+                "imgHeight": 22,
+                "chipText": "$6,500",
+                "title": "3D Illustration",
+                "imgAlt": "3d-illustration",
+                "subtitle": "Blender Illustration",
+                "src": "/images/cards/3d-illustration.png"
+            },
+            {
+                "imgWidth": 33,
+                "imgHeight": 22,
+                "chipText": "$4,290",
+                "subtitle": "Figma UI Kit",
+                "title": "Finance App Design",
+                "imgAlt": "finance-app-design",
+                "src": "/images/cards/finance-app-design.png"
+            },
+            {
+                "imgWidth": 20,
+                "imgHeight": 22,
+                "title": "4 Square",
+                "imgAlt": "4-square",
+                "chipText": "$44,500",
+                "subtitle": "Android Application",
+                "src": "/images/cards/4-square.png"
+            },
+            {
+                "imgWidth": 19,
+                "imgHeight": 22,
+                "chipText": "$12,690",
+                "title": "Delta Web App",
+                "imgAlt": "delta-web-app",
+                "subtitle": "React Dashboard",
+                "src": "/images/cards/delta-web-app.png"
+            },
+            {
+                "imgWidth": 23,
+                "imgHeight": 22,
+                "chipText": "$10,851",
+                "subtitle": "Vue + Laravel",
+                "title": "eCommerce Website",
+                "imgAlt": "ecommerce-website",
+                "src": "/images/cards/ecommerce-website.png"
+            }
+        ]
+    },
+    "performance": {
+        "income": [
+            70,
+            90,
+            80,
+            95,
+            75,
+            90
+        ],
+        "netWorth": [
+            110,
+            72,
+            62,
+            65,
+            100,
+            75
+        ],
+        "labels": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun"
+        ]
+    },
+    "overview": {
+        "data": 0,
+        "difference": 0,
+        "total": 0
+    },
+    "weeklySales": {
+        "comlumnEarning": [
+            90,
+            52,
+            67,
+            45,
+            75,
+            55,
+            48
+        ],
+        "comlumnExpense": [
+            -53,
+            -29,
+            -67,
+            -84,
+            -60,
+            -40,
+            -77
+        ],
+        "lineExpense": [
+            73,
+            20,
+            50,
+            -20,
+            58,
+            15,
+            31
+        ],
+        "labels": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul"
+        ],
+        "netIncome": 0,
+        "expense": 0
+    }
+}

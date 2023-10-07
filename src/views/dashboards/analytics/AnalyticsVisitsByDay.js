@@ -16,8 +16,22 @@ import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
 // ** Util Import
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { useEffect, useState } from 'react'
 
 const AnalyticsVisitsByDay = () => {
+
+
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    fetch('/data.json')
+      .then(response => response.json())
+      .then(data => setData(data?.visitsByDay))
+  }, [])
+
+
+  const series = [{ data: data?.weekData }]
+
   // ** Hook
   const theme = useTheme()
 
@@ -88,7 +102,7 @@ const AnalyticsVisitsByDay = () => {
         }
       />
       <CardContent sx={{ pt: { xs: `${theme.spacing(6)} !important`, md: `${theme.spacing(0)} !important` } }}>
-        <ReactApexcharts type='bar' height={215} options={options} series={[{ data: [38, 55, 48, 65, 80, 38, 48] }]} />
+        <ReactApexcharts type='bar' height={215} options={options} series={series} />
         <Box sx={{ mt: 5, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <Typography sx={{ mb: 0.75, fontWeight: 600 }}>Most Visited Day</Typography>

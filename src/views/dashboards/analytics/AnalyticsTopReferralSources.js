@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // ** MUI Import
 import Box from '@mui/material/Box'
@@ -35,118 +35,6 @@ const statusObj = {
   completed: { text: 'Completed', color: 'warning' }
 }
 
-const tabContentData = {
-  google: [
-    {
-      status: 'active',
-      conversion: '+24',
-      totalRevenue: '$42,857',
-      parameter: 'Email Marketing Campaign'
-    },
-    {
-      conversion: '-12',
-      status: 'completed',
-      totalRevenue: '$850',
-      parameter: 'Google Workspace',
-      conversionDifference: 'negative'
-    },
-    {
-      status: 'active',
-      conversion: '+24',
-      totalRevenue: '$5,576',
-      parameter: 'Affiliation Program'
-    },
-    {
-      conversion: '0',
-      status: 'in-draft',
-      totalRevenue: '$0',
-      parameter: 'Google AdSense'
-    }
-  ],
-  facebook: [
-    {
-      status: 'active',
-      conversion: '-8',
-      totalRevenue: '$322',
-      conversionDifference: 'negative',
-      parameter: 'Create Audiences in Ads Manager'
-    },
-    {
-      status: 'active',
-      conversion: '+19',
-      totalRevenue: '$5,634',
-      parameter: 'Facebook page advertising'
-    },
-    {
-      status: 'expired',
-      conversion: '-23',
-      totalRevenue: '$751',
-      conversionDifference: 'negative',
-      parameter: 'Messenger advertising'
-    },
-    {
-      conversion: '+21',
-      status: 'completed',
-      totalRevenue: '$3,585',
-      parameter: 'Video campaign'
-    }
-  ],
-  instagram: [
-    {
-      conversion: '-15',
-      status: 'in-draft',
-      totalRevenue: '$599',
-      conversionDifference: 'negative',
-      parameter: 'Create shopping advertising'
-    },
-    {
-      conversion: '+37',
-      status: 'completed',
-      totalRevenue: '$1,467',
-      parameter: 'IGTV advertising'
-    },
-    {
-      conversion: '0',
-      status: 'in-draft',
-      totalRevenue: '$0',
-      parameter: 'Collection advertising'
-    },
-    {
-      status: 'active',
-      conversion: '+29',
-      totalRevenue: '$4,546',
-      parameter: 'Stories advertising'
-    }
-  ],
-  reddit: [
-    {
-      conversion: '+2',
-      status: 'expired',
-      totalRevenue: '$404',
-      parameter: 'Interests advertising'
-    },
-    {
-      status: 'active',
-      conversion: '+25',
-      totalRevenue: '$399',
-      parameter: 'Community advertising'
-    },
-    {
-      conversion: '+21',
-      status: 'completed',
-      totalRevenue: '$177',
-      parameter: 'Device advertising'
-    },
-    {
-      status: 'active',
-      conversion: '-5',
-      totalRevenue: '$1,139',
-      parameter: 'Campaigning',
-      conversionDifference: 'negative'
-    }
-  ]
-}
-
 const RenderTabContent = ({ data }) => {
   return (
     <TableContainer>
@@ -162,7 +50,7 @@ const RenderTabContent = ({ data }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row, index) => (
+          {data?.map((row, index) => (
             <TableRow
               key={index}
               sx={{ '& .MuiTableCell-root': { border: 0, py: theme => `${theme.spacing(3)} !important` } }}
@@ -211,6 +99,15 @@ const AnalyticsTopReferralSources = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
+
+
+  const [datas, setDatas] = useState([])
+
+  useEffect(() => {
+    fetch('/data.json')
+      .then(response => response.json())
+      .then(data => setDatas(data?.topReferralSources))
+  }, [])
 
   const RenderTabAvatar = ({ category }) => (
     <Avatar
@@ -301,16 +198,20 @@ const AnalyticsTopReferralSources = () => {
         </TabList>
 
         <TabPanel sx={{ p: 0, mb: 2.5 }} value='google'>
-          <RenderTabContent data={tabContentData['google']} />
+          <RenderTabContent data={datas?.google} />
         </TabPanel>
         <TabPanel sx={{ p: 0, mb: 2.5 }} value='facebook'>
-          <RenderTabContent data={tabContentData['facebook']} />
+          <RenderTabContent data={datas?.facebook} />
         </TabPanel>
         <TabPanel sx={{ p: 0, mb: 2.5 }} value='instagram'>
-          <RenderTabContent data={tabContentData['instagram']} />
+          <RenderTabContent data={
+            datas?.instagram
+          } />
         </TabPanel>
         <TabPanel sx={{ p: 0, mb: 2.5 }} value='reddit'>
-          <RenderTabContent data={tabContentData['reddit']} />
+          <RenderTabContent data={
+            datas?.reddit
+          } />
         </TabPanel>
       </TabContext>
     </Card>

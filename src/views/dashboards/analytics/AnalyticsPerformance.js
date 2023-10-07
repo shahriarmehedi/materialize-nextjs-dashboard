@@ -7,19 +7,33 @@ import CardContent from '@mui/material/CardContent'
 // ** Custom Components Imports
 import OptionsMenu from 'src/@core/components/option-menu'
 import ReactApexcharts from 'src/@core/components/react-apexcharts'
+import { useEffect, useState } from 'react'
 
-const series = [
-  {
-    name: 'Income',
-    data: [70, 90, 80, 95, 75, 90]
-  },
-  {
-    name: 'Net Worth',
-    data: [110, 72, 62, 65, 100, 75]
-  }
-]
+
 
 const AnalyticsPerformance = () => {
+
+
+  const [datas, setDatas] = useState([])
+
+  useEffect(() => {
+    fetch('/data.json')
+      .then(response => response.json())
+      .then(data => setDatas(data?.performance))
+  }, [])
+
+
+  const series = [
+    {
+      name: 'Income',
+      data: datas?.income
+    },
+    {
+      name: 'Net Worth',
+      data: datas?.netWorth
+    }
+  ]
+
   // ** Hook
   const theme = useTheme()
 
@@ -55,7 +69,7 @@ const AnalyticsPerformance = () => {
       }
     },
     colors: [theme.palette.warning.main, theme.palette.primary.main],
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    labels: datas?.labels,
     markers: { size: 0 },
     xaxis: {
       labels: {
