@@ -104,11 +104,56 @@ const Register = () => {
   const { skin } = settings
   const imageSource = skin === 'bordered' ? 'auth-v2-register-illustration-bordered' : 'auth-v2-register-illustration'
 
+  // handle username
+  const [username, setUsername] = useState('')
+  const handleUsername = e => {
+    e.preventDefault()
+    setUsername(e.target.value)
+  }
+
+  // handle email
+  const [email, setEmail] = useState('')
+  const handleEmail = e => {
+    e.preventDefault()
+    setEmail(e.target.value)
+  }
+
+  // handle password
+  const [password, setPassword] = useState('')
+  const handlePassword = e => {
+    e.preventDefault()
+    setPassword(e.target.value)
+  }
+
 
   const handleRegister = e => {
     e.preventDefault()
-    console.log('register', e.target.value)
+    console.log(
+      {
+        username,
+        email,
+        password
+      }
+    )
 
+    // SEND TO DB
+    fetch('/api/user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+        {
+          username,
+          email,
+          password
+        }
+      )
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      })
   }
 
   return (
@@ -159,11 +204,12 @@ const Register = () => {
               <Typography variant='body2'>Make your app management easy and fun!</Typography>
             </Box>
             <form noValidate autoComplete='off' onSubmit={handleRegister}>
-              <TextField autoFocus fullWidth sx={{ mb: 4 }} label='Username' placeholder='johndoe' />
-              <TextField fullWidth label='Email' sx={{ mb: 4 }} placeholder='user@email.com' />
+              <TextField onBlur={handleUsername} autoFocus fullWidth sx={{ mb: 4 }} label='Username' placeholder='johndoe' />
+              <TextField onBlur={handleEmail} fullWidth label='Email' sx={{ mb: 4 }} placeholder='user@email.com' />
               <FormControl fullWidth>
                 <InputLabel htmlFor='auth-login-v2-password'>Password</InputLabel>
                 <OutlinedInput
+                  onBlur={handlePassword}
                   label='Password'
                   id='auth-login-v2-password'
                   type={showPassword ? 'text' : 'password'}
